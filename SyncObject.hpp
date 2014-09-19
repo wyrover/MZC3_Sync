@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////
-// SyncObject.h -- Win32 synchronization object
+// SyncObject.hpp -- Win32 synchronization object
 // This file is part of MZC3.  See file "ReadMe.txt" and "License.txt".
 ////////////////////////////////////////////////////////////////////////////
 
@@ -23,7 +23,7 @@ public:
     bool operator==(HANDLE hObject) const;
     bool operator!=(HANDLE hObject) const;
 
-    VOID Attach(HANDLE hObject);
+    void Attach(HANDLE hObject);
     HANDLE Detach();
 
     virtual BOOL Lock(DWORD dwTimeout = INFINITE);
@@ -37,7 +37,7 @@ public:
 #ifndef MZC_NO_INLINING
     #undef MZC_INLINE
     #define MZC_INLINE inline
-    #include "SyncObject_inl.h"
+    #include "SyncObject_inl.hpp"
 #endif
 
 #endif  // ndef __MZC3_SYNCOBJECT__

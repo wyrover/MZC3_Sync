@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////
-// CriticalSection.h -- Win32 critical section
+// CriticalSection.hpp -- Win32 critical section wrapper
 // This file is part of MZC3.  See file "ReadMe.txt" and "License.txt".
 ////////////////////////////////////////////////////////////////////////////
 
@@ -28,7 +28,7 @@ protected:
 #ifndef MZC_NO_INLINING
     #undef MZC_INLINE
     #define MZC_INLINE inline
-    #include "CriticalSection_inl.h"
+    #include "CriticalSection_inl.hpp"
 #endif
 
 #endif  // ndef __MZC3_CRITICALSECTION__

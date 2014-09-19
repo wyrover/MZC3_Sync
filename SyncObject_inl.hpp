@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////
-// SyncObject_inl.h -- Win32 synchronization object
+// SyncObject_inl.hpp -- Win32 synchronization object
 // This file is part of MZC3.  See file "ReadMe.txt" and "License.txt".
 ////////////////////////////////////////////////////////////////////////////
 
@@ -42,16 +42,14 @@ MZC_INLINE bool MSyncObject::operator!=(HANDLE hObject) const
 MZC_INLINE MSyncObject& MSyncObject::operator=(HANDLE hObject)
 {
     if (m_hObject != hObject)
-    {
-        if (m_hObject)
-            CloseHandle();
-        m_hObject = hObject;
-    }
+        Attach(hObject);
     return *this;
 }
 
-MZC_INLINE VOID MSyncObject::Attach(HANDLE hObject)
+MZC_INLINE void MSyncObject::Attach(HANDLE hObject)
 {
+    if (m_hObject)
+        CloseHandle();
     assert(hObject);
     assert(m_hObject == NULL);
     m_hObject = hObject;
